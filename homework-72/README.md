@@ -1,5 +1,5 @@
 ### 效果演示
-![avatar](/src/effectImg.png)
+![avatar](../src/effectImg.png)
 
 ### 一、语言和环境
 
