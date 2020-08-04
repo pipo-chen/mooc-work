@@ -1,5 +1,5 @@
 ### 效果演示
-![avatar](/src/effectImg.png)
+![avatar](https://github.com/pipo-chen/mooc-work/blob/master/homework-72/src/effectImg.png)
 
 ### 一、语言和环境
 
