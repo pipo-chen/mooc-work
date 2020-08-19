@@ -12,6 +12,11 @@ public class _1 {
         System.out.println("查询>search 入住>in 退房>out 退出>exit");
     }
 
+    /**
+     * 退房 & 入住操作管理
+     * @param rooms 酒店
+     * @param inType 操作类型：1. 为入住 2. 退房
+     */
     public static void operateInAndOut(String [][] rooms, boolean inType) {
 
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +59,7 @@ public class _1 {
                     break;
             }
             if (!room) {
-                System.out.println("没有此房间");
+                System.out.println("错误的房间号");
                 continue;
             }
             if (inType) {
@@ -70,13 +75,13 @@ public class _1 {
                 }
                 if (!empty) {
                     rooms[row_j][col_i] = "EMPTY";
-                    System.out.println("退住成功！");
+                    System.out.println("欢迎下次再来！");
                     break;
                 }
             }
 
             rooms[row_j][col_i] = name;
-            System.out.println("入住成功！");
+            System.out.println("欢迎"+name+"入住华天");
             break;
         } while (inType ? (room && empty) : (room && !empty));
     }
