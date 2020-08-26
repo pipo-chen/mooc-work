@@ -13,7 +13,7 @@ public class _02 {
     public static void main(String[] args) {
         //1. 输入日期
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入合同签订日期（2020-08-22）：");
+        System.out.println("请输入合同签订日期（yyyy-MM-dd）：");
         String date = sc.next();
         String[] dates = date.split("-");
         int year = Integer.parseInt(dates[0]);
