@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉列表级联</title>
+    <script>
+        function f(selectObj) {
+            var sel = document.getElementById("city");
+            sel.options.length = 1;
+            if (selectObj.selectedIndex == 1) {
+                var op1 = new Option("杭州","hz");
+                var op2 = new Option("台州","tz");
+                var op3 = new Option("温州","wz");
+                sel.add(op1);
+                sel.add(op2);
+                sel.add(op3);
+            } else if (selectObj.selectedIndex == 2) {
+                var op1 = new Option("长沙","cs");
+                var op2 = new Option("株洲","zz");
+                var op3 = new Option("衡阳","hy");
+                sel.add(op1);
+                sel.add(op2);
+                sel.add(op3);
+            } else if (selectObj.selectedIndex == 3) {
+                var op1 = new Option("青岛","qd");
+                var op2 = new Option("临淄","lz");
+                var op3 = new Option("济南","jn");
+                sel.add(op1);
+                sel.add(op2);
+                sel.add(op3);
+            }
+        }
+    </script>
+</head>
+<body>
+<select name="province" onchange="f(this)">
+    <option value="all">-省-</option>
+    <option value="cs">浙江</option>
+    <option value="wh">湖南</option>
+    <option value="sd">山东</option>
+</select>
+<select id="city">
+      <option value="all-city">-城市-</option>
+</select>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车模块</title>
+    <script>
+        function minusType(price, numid, totalid) {
+            var text = document.getElementById(numid);
+            var total = document.getElementById(totalid);
+            var final = document.getElementById("final");
+            if (text.value == 0) {
+                text.value = 0;
+
+            } else {
+                text.value--;
+                final.innerText = (parseFloat(final.innerText)- price).toFixed(2);
+            }
+
+            var res = text.value * price;
+            total.innerText = res.toFixed(2);
+        }
+        function addType(price, numid, totalid) {
+            var text = document.getElementById(numid);
+            var total = document.getElementById(totalid);
+            var final = document.getElementById("final");
+            final.innerText = (parseFloat(final.innerText) + price).toFixed(2);
+            console.log(text.value);
+            text.value++;
+            var res = text.value * price;
+            total.innerText = res.toFixed(2);
+        }
+    </script>
+    <style>
+        table{
+            width: 500px;
+            text-align: center;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<h2>
+    6.购物车
+</h2>
+<table border="1px">
+    <tr>
+        <td>商品名称</td>
+        <td>价格</td>
+        <td>数量</td>
+        <td>小计</td>
+    </tr>
+    <tr>
+        <td>book1</td>
+        <td>10.00</td>
+        <td>
+            <button onclick="minusType(10,'one','lb1')" >-</button>
+            <input type="text" id="one" value="1"/>
+            <button onclick="addType(10,'one','lb1')">+</button>
+        </td>
+        <td>
+            <label id="lb1">10.00</label>
+        </td>
+    </tr>
+     <tr>
+        <td>book2</td>
+        <td>5.00</td>
+        <td>
+            <button onclick="minusType(5,'two','lb2')" >-</button>
+            <input type="text" id="two" value="1"/>
+            <button onclick="addType(5,'two','lb2')">+</button>
+        </td>
+        <td>
+            <label id="lb2">5.00</label>
+        </td>
+    </tr>
+     <tr>
+        <td>book3</td>
+        <td>15.00</td>
+        <td>
+            <button onclick="minusType(15,'three','lb3')" >-</button>
+            <input type="text" id="three" value="1"/>
+            <button onclick="addType(15,'three','lb3')">+</button>
+        </td>
+        <td>
+            <label id="lb3">15.00</label>
+        </td>
+    </tr>
+    <tr>
+
+        <td colspan="3" style="text-align: right">
+           总计:
+        </td>
+        <td>
+             <label id="final">30.00</label>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
