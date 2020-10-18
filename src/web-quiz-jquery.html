@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 实现全选反选</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#selectAll").click(function () {
+
+                if (this.checked) {
+                    $("input[name='student']:checkbox").each(function () {
+
+                        $(this).prop("checked",true);
+                    })
+                }
+                else {
+                     $("input[name='student']:checkbox").each(function () {
+
+                        $(this).prop("checked",false);
+                    })
+                }
+
+            })
+        })
+    </script>
+</head>
+<body>
+
+<input type="checkbox" id="selectAll"><b>学号 姓名 性别</b><br/>
+<input type="checkbox" name="student" value="a">1001 张三 男<br/>
+<input type="checkbox" name="student" value="b">1002 李四 男<br/>
+<input type="checkbox" name="student" value="c">1003 王五 女<br/>
+
+</body>
+</html>
