@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>CheckBoxServlet</servlet-name>
+        <servlet-class>CheckBoxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckBoxServlet</servlet-name>
+        <url-pattern>/checkbox</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReadParamsServlet</servlet-name>
+        <servlet-class>ReadParamsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReadParamsServlet</servlet-name>
+        <url-pattern>/read-params</url-pattern>
+    </servlet-mapping>
+</web-app>
