@@ -27,4 +27,12 @@
         <servlet-name>ReadParamsServlet</servlet-name>
         <url-pattern>/read-params</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowErrorServlet</servlet-name>
+        <servlet-class>ShowErrorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowErrorServlet</servlet-name>
+        <url-pattern>/show-error</url-pattern>
+    </servlet-mapping>
 </web-app>
