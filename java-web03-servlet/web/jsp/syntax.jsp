@@ -1,7 +1,7 @@
 <%@ page import="jsp.User" %>
 <%@ page errorPage="error.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="Hello.jsp"%>
+<%@include file="hello.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- jsp 中两种 include 区别：
     <%@ include page ="hello.jsp" %>
@@ -30,7 +30,7 @@
     int fontSize;
 %>
 <hr/>
-<%@ include file="Hello.jsp"%>
+<%@ include file="hello.jsp"%>
 <%-- 该部分注释不会在网页中呈现 --%>
 <!-- 该部分注释可以在网页源码中展示出来 -->
 <hr/>
@@ -79,7 +79,7 @@
 <%fontSize++;%>
 <% } %>
 <hr/>
- <jsp:include page="Hello.jsp"></jsp:include>
+ <jsp:include page="hello.jsp"></jsp:include>
 <hr/>
 
 </body>
