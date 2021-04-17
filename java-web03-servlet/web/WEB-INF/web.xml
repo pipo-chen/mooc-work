@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>helloServlet</servlet-name>
-        <servlet-class>HelloServlet</servlet-class>
+        <servlet-class>servlet.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>helloServlet</servlet-name>
@@ -13,7 +13,7 @@
     </servlet-mapping>
      <servlet>
         <servlet-name>CheckBoxServlet</servlet-name>
-        <servlet-class>CheckBoxServlet</servlet-class>
+        <servlet-class>servlet.CheckBoxServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckBoxServlet</servlet-name>
@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ReadParamsServlet</servlet-name>
-        <servlet-class>ReadParamsServlet</servlet-class>
+        <servlet-class>servlet.ReadParamsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ReadParamsServlet</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ShowErrorServlet</servlet-name>
-        <servlet-class>ShowErrorServlet</servlet-class>
+        <servlet-class>servlet.ShowErrorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowErrorServlet</servlet-name>
