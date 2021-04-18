@@ -6,7 +6,7 @@
     <title>JSTL - SQL</title>
 </head>
 <body>
-<sql:setDataSource var="snapshot" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/sakila" user="root" password="wzy950505"/>
+<%--<sql:setDataSource var="snapshot" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/sakila" user="root" password="wzy950505"/>--%>
 
 <%--查询--%>
 <sql:query var="result" dataSource="${snapshot}" sql="select * from actor"/>
