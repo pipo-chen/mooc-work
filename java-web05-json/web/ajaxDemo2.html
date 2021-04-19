@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>演示 ajax 和后台的关系</title>
+    <script>
+         function getXMLHttpRequest() {
+            var xmlHttpRequest;
+            if (window.XMLHttpRequest) {
+                xmlHttpRequest = new XMLHttpRequest();
+            } else {
+                //老款浏览器
+                xmlHttpRequest = new ActiveXObject();
+            }
+            return xmlHttpRequest;
+        }
+
+        function checkUserName1(uname) {
+            //1. 拿到 XMLHttpRequest 对象
+            var xmlHttpRequest = getXMLHttpRequest();
+            //5. 设置 url
+            var url = "/checkUserName?uname"+uname;
+            //6. 设置open方式
+            xmlHttpRequest.open("GET", url);
+            //7. 设置请求头
+            xmlHttpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //2. 进行监听
+            xmlHttpRequest.onreadystatechange = function () {
+                //3. 意味着已经正常把数据发送给服务器，并且服务器也返回给了我们数据以及服务器状态正常
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    //4. 把后台返回过来的数据展示
+                    document.getElementById("span").innerText = xmlHttpRequest.responseText;
+
+                }
+
+            }
+            //7.  发送请求
+            xmlHttpRequest.send(null)
+
+        }
+
+        function checkUserName(uname) {
+            //1. 拿到 XMLHttpRequest 对象
+            var xmlHttpRequest = getXMLHttpRequest();
+
+            //5. 设置open方式
+            xmlHttpRequest.open("POST", "checkUserName");
+            //7. 设置请求头
+            xmlHttpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //2. 进行监听
+            xmlHttpRequest.onreadystatechange = function () {
+                //3. 意味着已经正常把数据发送给服务器，并且服务器也返回给了我们数据以及服务器状态正常
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    //4. 把后台返回过来的数据展示
+                    document.getElementById("span").innerText = xmlHttpRequest.responseText;
+
+                }
+
+            }
+            //6.  发送请求
+            xmlHttpRequest.send(null)
+
+        }
+    </script>
+</head>
+<body>
+<form action="/checkUserName" method="post">
+    用户名：<input type="text" name= "uname" placeholder="请输入用户名" onblur="checkUserName(this.value)"/>
+    <span style="color:red"></span><br>
+    密码：<input type="password" name="pwd">
+    <input type="submit" value="注册">
+</form>
+
+</body>
+</html>

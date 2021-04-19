@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>演示 XMLHTTPRequest 对象的构建</title>
+    <script>
+        function getXMLHttpRequest() {
+            var xmlHttpRequest;
+            if (window.XMLHttpRequest) {
+                xmlHttpRequest = new XMLHttpRequest();
+            } else {
+                //老款浏览器
+                xmlHttpRequest = new ActiveXObject();
+            }
+            return xmlHttpRequest;
+        }
+        alert(getXMLHttpRequest());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
