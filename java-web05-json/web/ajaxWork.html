@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完成 ajax 的课堂案例演示</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        tr {
+            align-content: center;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $.ajax({
+                    type:'post',
+                    url:'/findAll',
+                    success: function (data) {
+                        //1 把 json 格式的字符串转换成 对象
+                        var jsonObj = JSON.parse(data);
+                        //2 把该 Json 对象进行遍历操作
+                        //[{id:10001,usename:zhangsan},{id:1003, username:lisi}]
+                        for (var index in jsonObj) { //代表tr
+                            //3 创建一个 tr 对象
+                            var trObj = $("<tr></tr>");
+                            for(var key in jsonObj[index]) {// 代表 td
+                                //4 创建一个 td 对象
+                                var tdObj = $('<td></td>');
+                                //5 为 td 对象赋值
+                                tdObj.text(jsonObj[index][key]); //这里是不是一个 jquery 对象
+                                //6 把这个 td 对象放入到 tr 中去
+                                trObj.append(tdObj);
+
+                            }
+                            //7 每次外层循环完毕 徐亚把 tr 放入 table
+                            $('table').append(trObj);
+
+                        }
+                    },
+                    error:function (xml) {
+                        alert("系统错误！")
+                    }
+
+                })
+            })
+        })
+    </script>
+
+
+</head>
+<body>
+<button>展示数据</button>
+<table cellpadding="0px" cellspacing="0px" width="60%" border="1px solid black">
+    <tr>
+        <th>用户ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+    </tr>
+</table>
+
+</body>
+</html>
