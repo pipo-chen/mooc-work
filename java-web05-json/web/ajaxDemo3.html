@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用 JQuery 来演示 ajax 和后台的基本关联</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        /*
+        // post
+        $(function () {
+            //1 绑定事件
+            $(":text").blur(function () {
+                //2 失去焦点事件的具体内容
+                $.post("checkUserName",{"uname":$(this).val()}, function (data) {
+                    //3 发送 ajax 请求到后台并且得到反馈之后的具体工作
+                    //3.1 每次失去焦点的时候先清空之前的内容
+                    $("#span").remove();
+                    //3.2 在 input 标签后面新建一个span标签 设置颜色 红色
+                    $(":text").after("<span style='color: red' id='span'></span>")
+                    //3.3 为该 span 标签设置内容就是后台发送过来的数据
+                    $('span').text(data);
+
+                })
+            })
+        });
+        */
+        // ajax
+          $(function () {
+            //1 绑定事件
+            $(":text").blur(function () {
+              $.ajax({
+                  type:'post',
+                  url:"checkUserName",
+                  data:{'uname':$(this).val()},
+                  success:function (data) {
+                      //这里才是写业务逻辑的地方
+                      $("#span").remove();
+                      $(":text").after("<span style='color: red' id='span'></span>");
+                      $('span').text(data);
+                  },
+                  error: function (xhr) {
+                      alert("系统错误！");
+                  }
+              })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<form action="/checkUserName" method="post">
+    用户名：<input type="text" name="uname" placeholder="please input name"><br>
+    密码：<input type="password" name="pwd"/><br>
+    <input type="submit" value="SIGN IN">
+</form>
+
+</body>
+</html>
