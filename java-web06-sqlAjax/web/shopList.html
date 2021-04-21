@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示商品信息</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        tr{
+            align-content: center;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $.ajax({
+                    type:"post",
+                    url:"/findSales",
+                    success: function(data) {
+                        // 1 把 json 格式的字符串转换成对象
+                        var jsonObj = JSON.parse(data);
+                        //2 把 JSON对象进行遍历
+                        for (var index in jsonObj) {
+                            //3 创建一个 tr 对象
+                            var trObj = $("<tr></tr>");
+                            for (var key in jsonObj[index]) {
+                                //4 创建一个 td 对象
+                                var tdObj = $("<td></td>");
+                                //5 为 td 对象赋值
+                                tdObj.text(jsonObj[index][key]);
+                                trObj.append(tdObj);
+                            }
+                            $("table").append(trObj);
+                        }
+                    },
+                    error:function(xml) {
+                        alert("系统错误");
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<button>展示数据</button>
+ <h1>当前销量最好的商品是：</h1>
+<table cellspacing="0px" cellpadding="0px" width="60%" border="1px solid black">
+    <tr>
+        <th>商品 ID：</th>
+        <th>商品名称：</th>
+        <th>商品销量：</th>
+    </tr>
+</table>
+
+
+</body>
+</html>
