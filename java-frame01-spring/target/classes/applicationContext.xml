@@ -2,57 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-    <!--设置 jdbc property 文件 -->
-    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--
-    相当于告诉 spring 创建一个 userService 对象
-    singleton:默认就是单例对象
-        bean 实例化时机：当 spring 核心文件被加载时，实例化配置的 bean 实例
-        实例化数量：1个
-        生命周期：
-            1 对象创建：创建容器时被创建
-            2 对象运行：容器还在，对象就一直存在
-            3 对象销毁：当应用卸载，销毁容器，对象就被销毁
-    protoype:原型对象
-        实例化数量：多个
-        bean 实例化时机：通过 getBean 方法调用时创建
-        生命周期：
-            1 对象创建：该对象需要使用时，则创建 bean
-            2 对象运行：对象在使用时，就存在
-            3 对象销毁：当对象长时间不用，会被 GC 回收
-    -->
-    <!--userService 中还有一个 userDao 对象 这种依赖关系怎么配置?-->
-    <bean id ="userService" class="com.study.service.imp.UserServiceImp" scope="singleton">
-        <property name="userDao" ref="userDao"/>
-    </bean>
-    <bean id="userDao" class="com.study.dao.imp.UserDaoImp"></bean>
+    <!--扫描注解-->
+    <!--<context:component-scan base-package="com.study"/>-->
 
-    <bean id ="staffService" class="com.study.service.imp.StaffServiceImp" scope="prototype" />
-
-    <!-- 创建的时候可以执行创建的方法， 销毁的时候默认执行销毁的方法
-    <bean id="user" class="com.study.model.User" init-method="init" destroy-method="destory">
-        <constructor-arg index="0" value="mk"></constructor-arg>
-        <constructor-arg index="1" value="29"></constructor-arg>
-    </bean>
-    -->
-    <!--1. 实例工厂-->
-    <!--    <bean id="user" class="com.study.model.User" factory-method="getInstance"></bean>-->
-
-    <!--2. 实例工厂-->
-    <bean id="userFactory" class="com.study.model.UserFactory"></bean>
-    <bean id="user" class="com.study.model.User" factory-bean="userFactory" factory-method="createUser">
-        <property name="age" value="24"/>
-        <property name="name" value="oooo"/>
-    </bean>
-
-    <!--数据库 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/sakila"></property>
-        <property name="user" value="root"></property>
-        <property name="password" value="wzy950505"></property>
-    </bean>
 
 </beans>

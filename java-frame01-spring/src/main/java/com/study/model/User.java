@@ -1,10 +1,7 @@
 package com.study.model;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public class User {
 
-//	@Value("") 等价于 <property name = "age" value ="20"/>
 	private String name;
 
 	private int age;
