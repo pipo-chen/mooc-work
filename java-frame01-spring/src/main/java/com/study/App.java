@@ -13,8 +13,8 @@ public class App {
 
 	public static void main(String[] args) {
 
-		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");//期望当前容器去加载xml
-//		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringApp.class);
+//		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");//期望当前容器去加载xml
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringApp.class);
 		UserService userService = (UserService) applicationContext.getBean("userService");
 		userService.save();
 

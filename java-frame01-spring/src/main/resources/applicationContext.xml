@@ -9,25 +9,4 @@
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
-
-    <!--扫描注解-->
-    <!--<context:component-scan base-package="com.study"/>-->
-
-<!--
-com.study.dao..*.*(..)//对当前包 及 子包下所有方法进行切面
-com.study.dao.*.*(..) //对当前包下所有方法进行切面
--->
-    <aop:config>
-        <aop:aspect ref="myAspect">
-            <aop:before method="before" pointcut="execution(* com.study..*.sa*(..))"/>
-            <aop:after method="after" pointcut="execution(* com.study..*.sa*(..))"/>
-<!--            <aop:around method="around" pointcut="execution(* com.study..*.sa*(..))"/>-->
-        </aop:aspect>
-    </aop:config>
-    <bean id="myAspect" class="com.study.aop.MyAspect"/>
-    <bean id="userService" class="com.study.service.imp.UserServiceImp">
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-    <bean id="userDao" class="com.study.dao.imp.UserDaoImp"/>
-
 </beans>
