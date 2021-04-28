@@ -1,3 +1,8 @@
+package dao;
+
+import entity.Actor;
+import utils.JDBCUtils;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,28 +69,31 @@ public class ActorDao {
 
 	/**
 	 * 查询
-	 * @param actor 根据 id
-	 * @throws SQLException
+	 * @param id
+	 * @return
 	 */
-	public Actor queryActor(Actor actor) throws SQLException {
+	public Actor queryActor(int id) {
 		//获取连接
 		Connection conn = JDBCUtils.getConnnection();
 		//sql
 		String sql = "select * from actor where actor_id=?";
 		//预编译
-		PreparedStatement psmt = conn.prepareStatement(sql);
-		//参数替换
-		psmt.setInt(1, actor.getActor_id());
-		//执行 sql
-		ResultSet rs = psmt.executeQuery();
-
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
 		Actor result = null;
-		while (rs.next()) {
-			result = new Actor();
-			result.setActor_id(rs.getInt("actor_id"));
-			result.setFirst_name(rs.getString("first_name"));
-			result.setLast_name(rs.getString("last_name"));
-			result.setLast_update(rs.getDate("last_update"));
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, id);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				result = new Actor();
+				result.setActor_id(rs.getInt("actor_id"));
+				result.setFirst_name(rs.getString("first_name"));
+				result.setLast_name(rs.getString("last_name"));
+				result.setLast_update(rs.getDate("last_update"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -95,19 +103,23 @@ public class ActorDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Actor> queryAllActor() throws SQLException {
+	public List<Actor> queryAllActor() {
 		//获取连接
 		Connection conn = JDBCUtils.getConnnection();
 		//sql
 		String sql = "select * from actor ";
-		//预编译
-		Statement stmt = conn.createStatement();
-		//执行 sql
-		ResultSet rs = stmt.executeQuery(sql);
 
-		List<Actor> list = new ArrayList<>();
-		Actor result = null;
-		while (rs.next()) {
+		//预编译
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<Actor> list = null;
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			list = new ArrayList<>();
+			Actor result = null;
+			while (rs.next()) {
 			result = new Actor();
 			result.setActor_id(rs.getInt("actor_id"));
 			result.setFirst_name(rs.getString("first_name"));
@@ -115,6 +127,10 @@ public class ActorDao {
 			result.setLast_update(rs.getDate("last_update"));
 			list.add(result);
 		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return list;
 	}
 }

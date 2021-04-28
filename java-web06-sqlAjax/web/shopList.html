@@ -10,14 +10,16 @@
         }
     </style>
     <script>
-        $(function () {
-            $("button").click(function () {
-                $.ajax({
+        setInterval(function () {
+             $.ajax({
                     type:"post",
                     url:"/findSales",
                     success: function(data) {
                         // 1 把 json 格式的字符串转换成对象
                         var jsonObj = JSON.parse(data);
+                        var firsttr = $("<tr><th>商品 ID：</th><th>商品名称：</th><th>商品销量：</th><th>商品价格：</th></tr>");
+                        $("table tr").empty();
+                         $("table").append(firsttr);
                         //2 把 JSON对象进行遍历
                         for (var index in jsonObj) {
                             //3 创建一个 tr 对象
@@ -36,21 +38,14 @@
                         alert("系统错误");
                     }
                 })
-            })
-        })
+        }, 30000)
+
     </script>
 </head>
 <body>
-<button>展示数据</button>
  <h1>当前销量最好的商品是：</h1>
 <table cellspacing="0px" cellpadding="0px" width="60%" border="1px solid black">
-    <tr>
-        <th>商品 ID：</th>
-        <th>商品名称：</th>
-        <th>商品销量：</th>
-    </tr>
+
 </table>
-
-
 </body>
 </html>

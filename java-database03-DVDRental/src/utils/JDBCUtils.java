@@ -1,8 +1,8 @@
+package utils;
+
 import java.sql.*;
-import java.util.Collections;
 
 public class JDBCUtils {
-
 	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
 	public static final String URL = "jdbc:mysql://localhost:3306/sakila";
@@ -10,17 +10,16 @@ public class JDBCUtils {
 	public static final String USER = "root";
 
 	public static final String PASSWORD = "wzy950505";
-
 	static {
-		try {
-			//1. 加载驱动
-			Class.forName(DRIVER);
+			try {
+				//1. 加载驱动
+				Class.forName(DRIVER);
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
 
+			}
 		}
-	}
 
 	public static Connection getConnnection() {
 		Connection conn = null;
@@ -91,22 +90,5 @@ public class JDBCUtils {
 		closeConnection(conn);
 		closeResultSet(resultSet);
 		closeStatement(statement);
-	}
-
-	//入口
-	public static void main(String[] args) throws Exception {
-		//1. 加载驱动
-		Class.forName(DRIVER);
-		//2 获取数据
-		Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		//3 操作数据
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from actor");
-
-		//4 加载前端
-		while (rs.next()) {
-			System.out.println("id: "+rs.getInt("actor_id")+" first_name: "+rs.getString("first_name")+" last_name:"+ rs.getString("last_name"));
-		}
 	}
 }

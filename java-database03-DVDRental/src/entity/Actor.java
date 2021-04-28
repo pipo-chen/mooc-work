@@ -1,9 +1,15 @@
+package entity;
+
 import java.util.Date;
 
 public class Actor {
+
 	private int actor_id;
+
 	private String first_name;
+
 	private String last_name;
+
 	private Date last_update;
 
 	public int getActor_id() {
@@ -38,13 +44,4 @@ public class Actor {
 		this.last_update = last_update;
 	}
 
-	@Override
-	public String toString() {
-		return "Actor{" +
-				"actor_id=" + actor_id +
-				", first_name='" + first_name + '\'' +
-				", last_name='" + last_name + '\'' +
-				", last_update=" + last_update +
-				'}';
-	}
 }
