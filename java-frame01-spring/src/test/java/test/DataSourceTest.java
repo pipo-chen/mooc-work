@@ -3,6 +3,7 @@ package test;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -29,9 +30,11 @@ public class DataSourceTest {
 		dataSource.setUrl("jdbc:mysql://localhost:3306/sakila");
 		dataSource.setUsername("root");
 		dataSource.setPassword("wzy950505");
-		Connection conn = dataSource.getConnection();
-		System.out.println(conn);
-		conn.close();
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		jdbcTemplate.setDataSource(dataSource);
+		int row = jdbcTemplate.update("insert into t_order value (?,?)",8,100);
+		System.out.println(row);
 	}
 
 	@Test
@@ -44,7 +47,6 @@ public class DataSourceTest {
 	public void test03() throws Exception {
 		ResourceBundle rs = ResourceBundle.getBundle("jdbc");
 		System.out.println(rs.getString("driver"));
-
 	}
 
 }
