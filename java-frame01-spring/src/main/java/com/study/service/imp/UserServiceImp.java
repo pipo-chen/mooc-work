@@ -20,7 +20,6 @@ public class UserServiceImp implements UserService {
 		this.userDao = userDao;
 	}
 
-
 	public String save() {
 		UserDao userDao = new UserDaoImp();
 		userDao.save();
