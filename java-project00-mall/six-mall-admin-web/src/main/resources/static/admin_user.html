@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>six-mall | 后台用户管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+	<style>
+		.sidebar-dark-primary{
+			background-color: #ffffff;
+		}
+		.sidebar-dark-primary .sidebar a{
+			color:#17a2b8
+		}
+		.sidebar :hover {
+			color:#17a2b8;
+		}
+		.sidebar-dark-primary .nav-header{
+			color:#000000
+		}
+	</style>
+	<style>
+		.ui-jqgrid tr.jqgrow td {
+			white-space: normal !important;
+			height: auto;
+			vertical-align: text-top;
+			padding-top: 2px;
+		}
+	</style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Main content -->
+	<div class="content">
+		<div class="container-fluid">
+			<div class="card card-primary card-outline">
+				<div class="card-header">
+					<h3 class="card-title">会员管理</h3>
+				</div> <!-- /.card-body -->
+				<div class="card-body">
+					<div class="grid-btn">
+						<button class="btn btn-info" onclick="lockUser(0)"><i
+								class="fa fa-plus"></i>&nbsp;解除禁用
+						</button>
+						<button class="btn btn-danger" onclick="lockUser(1)"><i
+								class="fa fa-trash-o"></i>&nbsp;禁用账户
+						</button>
+					</div>
+					<div class="card-body">
+						<table id="jqGrid" class="table table-bordered">
+						</table>
+						<div id="jqGridPager"></div>
+					</div><!-- /.card-body -->
+				</div>
+			</div><!-- /.container-fluid -->
+		</div>
+	</div>
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.min.js"></script>
+    <!-- jqgrid -->
+    <script src="plugins/jqgrid-5.3.0/jquery.jqGrid.min.js"></script>
+    <script src="plugins/jqgrid-5.3.0/grid.locale-cn.js"></script>
+    <!-- sweetalert -->
+    <script src="plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/mall_user.js"></script>
+</body>
+</html>

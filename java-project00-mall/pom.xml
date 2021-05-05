@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>six-mall-common</module>
+        <module>six-mall-user</module>
+        <module>six-mall-admin-web</module>
+        <module>six-mall-user/six-mall-user-api</module>
+        <module>six-mall-user/six-mall-user-service</module>
+        <module>six-mall-shop</module>
+        <module>six-mall-shop/six-mall-shop-api</module>
+        <module>six-mall-website</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.unicorn</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>parent</name>
+    <description>parent project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+        <springboot.version>2.1.1RELEASE</springboot.version>
+        <springboot.starterweb>2.1.18.RELEASE</springboot.starterweb>
+        <mybatis.springboot.version>2.1.4</mybatis.springboot.version>
+        <mysql>8.0.24</mysql>
+    </properties>
+
+    <!--考虑到各个模块如果引入相同的依赖，万一存在版本不一致，所以做的依赖管理-->
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+            <!--spring 相关的配置-->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.springboot.version}</version>
+            </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.starterweb}</version>
+        </dependency>
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.1</version>
+            <scope>test</scope>
+        </dependency>
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql}</version>
+        </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+</project>

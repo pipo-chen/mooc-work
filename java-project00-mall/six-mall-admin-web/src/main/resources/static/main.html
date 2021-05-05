@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>six-mall | 后台管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+	<style>
+		.sidebar-dark-primary{
+			background-color: #ffffff;
+		}
+		.sidebar-dark-primary .sidebar a{
+			color:#17a2b8
+		}
+		.sidebar :hover {
+			color:#17a2b8;
+		}
+		.sidebar-dark-primary .nav-header{
+			color:#000000
+		}
+	</style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- 左侧菜单sidebar-fragment -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<!-- Brand Logo -->
+		<a href="/" class="brand-link">
+			<img src="img/logo-1.png" alt="ssm-cluster Logo"
+				 class="brand-image img-circle elevation-3"
+				 style="opacity: .8">
+			<span class="brand-text font-weight-light" style="color:black;">第六商城</span>
+		</a>
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+					data-accordion="false">
+					
+					<li class="nav-item">
+						<a href="mall_carousel.html" target="iframepage">
+							<p>1-轮播图配置</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_index_config.html?configType=3" target="iframepage">
+							<p>2-热销商品配置</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_index_config.html?configType=4" target="iframepage">
+							<p>3-新品上线配置</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_index_config.html?configType=5" target="iframepage">
+							<p>4-为你推荐配置</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_category.html?parentId=0&categoryLevel=1&backParentId=0" target="iframepage">
+							<p>5-分类管理</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_goods.html" target="iframepage">
+							<p>6-商品管理</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_user.html" target="iframepage">
+							<p>7-会员管理</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="admin_user.html" target="iframepage">
+							<p>x-后台用户管理(作业-自行完成)</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="mall_order.html" target="iframepage">
+							<p>8-订单管理</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="password.html" target="iframepage">
+							<p>9-修改密码</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" id="logout">
+							<p>10-安全退出</p>
+						</a>
+					</li>
+					</li>
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+	</aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+		<iframe id="iframepage" name="iframepage" src="welcome.html" width="100%" frameborder="0" onload="changeFrameHeight()" ></iframe>
+        <!-- /.content -->
+    </div>
+</div>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

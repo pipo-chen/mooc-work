@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>six-mall | 后台管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">商品信息编辑</h3>
+                </div>
+                <div class="card-body">
+                    <form id="goodsForm" onsubmit="return false;">
+                        <div class="form-group" style="display:flex;">
+                            <label class="control-label">请选择分类:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <select class="form-control col-sm-3" id="levelOne"
+                                    data-placeholder="请选择分类...">
+                            </select>&nbsp;
+                            <select class="form-control col-sm-3"
+                                    id="levelTwo"
+                                    data-placeholder="请选择分类...">
+                            </select>&nbsp;
+                            <select class="form-control col-sm-3"
+                                    id="levelThree"
+                                    data-placeholder="请选择分类...">
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:flex;">
+                            <input type="hidden" id="goodsId" name="goodsId">
+                            <input type="text" class="form-control col-sm-6" id="goodsName" name="goodsName"
+                                   placeholder="*请输入商品名称(必填)"
+                                   required="true">
+                            &nbsp;&nbsp;
+                            <input type="text" class="form-control col-sm-6" id="goodsIntro" name="goodsIntro"
+                                   placeholder="*请输入商品简介(100字以内)"
+                                   required="true">
+                        </div>
+                        <div class="form-group" style="display:flex;">
+                            <input type="number" class="form-control col-sm-6" id="originalPrice"
+                                   name="originalPrice"
+                                   placeholder="*请输入商品价格"
+                                   required="true">
+                            &nbsp;&nbsp;
+                            <input type="number" class="form-control col-sm-6" id="sellingPrice"
+                                   name="sellingPrice"
+                                   placeholder="*请输入商品售卖价"
+                                   required="true">
+                        </div>
+                        <div class="form-group" style="display:flex;">
+                            <input type="number" class="form-control col-sm-6" id="stockNum" name="stockNum"
+                                   placeholder="*请输入商品库存数"
+                                   required="true">
+                            &nbsp;&nbsp;
+                            <input type="text" class="form-control col-sm-6" id="tag" name="tag"
+                                   placeholder="*请输入商品小标签"
+                                   required="true">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">上架状态:&nbsp;</label>
+                            <input name="goodsSellStatus" type="radio" id="goodsSellStatusTrue" checked=true
+                                   value="0"/>&nbsp;上架&nbsp;
+                            <input name="goodsSellStatus" type="radio" id="goodsSellStatusFalse" value="1"
+                            />&nbsp;下架&nbsp;
+                        </div>
+                        <div class="form-group">
+                                <textarea id="editor" style="width: 100%; height: 750px;"
+                                ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <!-- 按钮 -->
+                            &nbsp;<button class="btn btn-info float-right" style="margin-left: 5px;"
+                                          id="confirmButton">保存商品
+                        </button>&nbsp;
+                            &nbsp;<button class="btn btn-secondary float-right" style="margin-left: 5px;"
+                                          id="cancelButton">返回商品列表
+                        </button>&nbsp;
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="content">
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="goodsModal" tabindex="-1" role="dialog" aria-labelledby="goodsModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h6 class="modal-title" id="goodsModalLabel">信息完善</h6>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="return false;">
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <img id="goodsCoverImg" src="/img/img-upload.png"
+                                         style="height: 64px;width: 64px;">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <button class="btn btn-info" style="margin-bottom: 5px;"
+                                            id="uploadGoodsCoverImg">
+                                        <i class="fa fa-picture-o"></i>&nbsp;上传商品主图
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="saveButton">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+    </div>
+
+</div>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+<!-- sweetalert -->
+<script src="plugins/sweetalert/sweetalert.min.js"></script>
+<!-- ajaxupload -->
+<script src="plugins/ajaxupload/ajaxupload.js"></script>
+<!-- kindeditor -->
+<script src="plugins/kindeditor-4.1.10/kindeditor-all.js"></script>
+<script src="plugins/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script src="js/public.js"></script>
+<script src="js/mall_goods_edit.js"></script>
+</body>
+</html>

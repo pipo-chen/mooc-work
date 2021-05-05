@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicorn.mall.user.mapper.AdminUserMapper">
+    <!--定义查询结果的转换规则-->
+    <resultMap id="BaseResultMap" type="com.unicorn.mall.user.entity.AdminUser">
+        <id column="staff_id" jdbcType="INTEGER" property="staffId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="first_name" jdbcType="VARCHAR" property="firstName"/>
+        <result column="last_name" jdbcType="VARCGAR" property="lastName"/>
+        <result column="last_update" jdbcType="DATE" property="lastUpdate"/>
+        <result column="address_id" jdbcType="INTEGER" property="addressId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        staff_id, first_name, last_name, username,password,email,store_id,last_update,address_id
+    </sql>
+    <select id="login" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from staff
+        where username = #{username, jdbcType=VARCHAR} AND password = #{password, jdbcType=VARCHAR}
+    </select>
+
+</mapper>
