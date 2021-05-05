@@ -1,4 +1,4 @@
-db.driverLocation=/Users/ct/mysql-connector-java-8.0.24-bin.jar
+db.driverLocation=/Users/ct/Documents/Alg/mooc-work/java-project01-mmall/src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.23.jar
 db.driverClassName=com.mysql.cj.jdbc.Driver
 db.url=jdbc:mysql://localhost:3306/mmall_learning?characterEncoding=utf-8
 db.username=root

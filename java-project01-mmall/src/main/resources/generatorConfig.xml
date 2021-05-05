@@ -32,11 +32,12 @@
             <!-- 建立的 model 对象是否不可改变，即生成的 model 对象不会有setter 方法 只有构造方法 -->
             <property name="immutable" value="false"/>
         </javaModelGenerator>
+
         <sqlMapGenerator targetPackage="mappers" targetProject="./src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         
-        <javaClientGenerator targetPackage="com.mmall.dao" targetProject="./src/java/main">
+        <javaClientGenerator targetPackage="com.mmall.dao" targetProject="./src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
