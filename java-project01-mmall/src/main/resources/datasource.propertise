@@ -1,0 +1,5 @@
+db.driverLocation=/Users/ct/mysql-connector-java-8.0.24-bin.jar
+db.driverClassName=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/mmall_learning?characterEncoding=utf-8
+db.username=root
+db.password=wzy950505
