@@ -63,8 +63,8 @@
       quantity, checked, create_time, 
       update_time)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.mmall.pojo.Cart">
     insert into mmall_cart
@@ -107,10 +107,10 @@
       <if test="checked != null">
         #{checked,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null">
+      <if test="createTime == null">
         now(),
       </if>
-      <if test="updateTime != null">
+      <if test="updateTime == null">
         now(),
       </if>
     </trim>
@@ -149,4 +149,50 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCartByUserIdProductId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_cart
+    where product_id = #{productId} and user_id = #{userId}
+  </select>
+
+  <select id="selectCartByUserId" parameterType="int" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_cart
+    where user_id = #{userId}
+  </select>
+  <select id="selectCartProductCheckStatusByUserId" parameterType="int" resultType="int">
+    select count(1)
+    from mmall_cart
+    where checked = 0 and user_id = #{userId}
+  </select>
+  
+  <delete id="deleteByUserIdProductIds" parameterType="map">
+    delete  from mmall_cart
+    where user_id = #{userId}
+    <if test="productIdList != null">
+      and product_id in
+      <foreach collection="productIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if> 
+  </delete>
+
+  <update id="checkOrUnCheckedProduct" parameterType="map">
+    update mmall_cart
+    set checked=#{checked}
+    update_time = now()
+    where user_id = #{userId}
+    <if test="productId != null">
+      and product_id = #{productId}
+    </if>
+  </update>
+
+<!--  如果这个 user_id 查出来是空的话 是无法赋值给 int 类型的-->
+  <select id="selectCardProductCount" parameterType="int" resultType="int">
+    select NULLIF (sum(quantity), 0) as count from mmall_cart
+    where user_id = #{userId}
+  </select>
 </mapper>
