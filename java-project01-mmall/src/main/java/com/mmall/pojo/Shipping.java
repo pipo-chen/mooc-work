@@ -2,7 +2,7 @@ package com.mmall.pojo;
 
 import java.util.Date;
 
-public class Shopping {
+public class Shipping {
     private Integer id;
 
     private Integer userId;

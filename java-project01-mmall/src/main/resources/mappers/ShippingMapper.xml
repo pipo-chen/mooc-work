@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mmall.dao.ShoppingMapper">
-  <resultMap id="BaseResultMap" type="com.mmall.pojo.Shopping">
+<mapper namespace="com.mmall.dao.ShippingMapper">
+  <resultMap id="BaseResultMap" type="com.mmall.pojo.Shipping">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
@@ -51,21 +51,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from mmall_shopping
+    from mmall_shipping
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from mmall_shopping
+    delete from mmall_shipping
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mmall.pojo.ShoppingExample">
-    delete from mmall_shopping
+  <delete id="deleteByExample" parameterType="com.mmall.pojo.ShippingExample">
+    delete from mmall_shipping
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mmall.pojo.Shopping">
-    insert into mmall_shopping (id, user_id, receiver_name, 
+  <insert id="insert" parameterType="com.mmall.pojo.Shipping" useGeneratedKeys="true" keyProperty="id">
+    insert into mmall_shipping (id, user_id, receiver_name,
       receiver_phone, receiver_mobile, receiver_province, 
       receiver_city, receiver_district, receiver_address, 
       receiver_zip, create_time, update_time
@@ -76,8 +76,8 @@
       #{receiverZip,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mmall.pojo.Shopping">
-    insert into mmall_shopping
+  <insert id="insertSelective" parameterType="com.mmall.pojo.Shipping">
+    insert into mmall_shipping
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -155,8 +155,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.pojo.Shopping">
-    update mmall_shopping
+  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.pojo.Shipping">
+    update mmall_shipping
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -194,8 +194,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Shopping">
-    update mmall_shopping
+  <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Shipping">
+    update mmall_shipping
     set user_id = #{userId,jdbcType=INTEGER},
       receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
@@ -209,4 +209,40 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <delete id="deleteByShippingIdUserId" parameterType="map" >
+    delete from mmall_shipping
+    where id = #{shippingId} and user_id = #{userId}
+  </delete>
+
+  <update id="updateByShipping" parameterType="com.mmall.pojo.Shipping">
+     update mmall_shipping
+    set receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
+      receiver_province = #{receiverProvince,jdbcType=VARCHAR},
+      receiver_city = #{receiverCity,jdbcType=VARCHAR},
+      receiver_district = #{receiverDistrict,jdbcType=VARCHAR},
+      receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      receiver_zip = #{receiverZip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByShippingIdUserId" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_shipping
+    where user_id = #{userId}
+    and id = #{shippingId}
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_shipping
+    where user_id = #{userId}
+  </select>
 </mapper>
