@@ -27,7 +27,7 @@
     <properties>
         <java.version>1.8</java.version>
         <springboot.version>2.1.1RELEASE</springboot.version>
-        <springboot.starterweb>2.1.18.RELEASE</springboot.starterweb>
+        <springboot.starterweb>2.5.12</springboot.starterweb>
         <mybatis.springboot.version>2.1.4</mybatis.springboot.version>
         <mysql>8.0.24</mysql>
     </properties>
