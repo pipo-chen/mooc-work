@@ -29,7 +29,7 @@
         <springboot.version>2.1.1RELEASE</springboot.version>
         <springboot.starterweb>2.1.18.RELEASE</springboot.starterweb>
         <mybatis.springboot.version>2.1.4</mybatis.springboot.version>
-        <mysql>8.0.24</mysql>
+        <mysql>8.0.28</mysql>
     </properties>
 
     <!--考虑到各个模块如果引入相同的依赖，万一存在版本不一致，所以做的依赖管理-->
